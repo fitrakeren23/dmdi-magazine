@@ -16,6 +16,9 @@ Route::get('/', function () {
 Route::get('/{locale}', [HomeController::class, 'index'])->where('locale', 'id|en');
 Route::get('/{locale}/article/{slug}', [FrontendController::class, 'showArticle'])->where('locale', 'id|en');
 
+Route::get('/login', function () {
+    return redirect()->route('admin.login');
+})->name('login');
 // Admin Auth Routes
 Route::get('/admin/login', [AuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AuthController::class, 'login']);
